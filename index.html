@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Road to Italy | Study in Italy</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        forest: '#132a23',
+                        cream: '#f9f6f0',
+                        it_red: '#ce2b37',
+                        it_green: '#009246',
+                        gold: '#d4af37',
+                        card_bg: 'rgba(249, 246, 240, 0.05)'
+                    },
+                    fontFamily: {
+                        playfair: ['"Playfair Display"', 'serif'],
+                        montserrat: ['"Montserrat"', 'sans-serif'],
+                        dancing: ['"Dancing Script"', 'cursive'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Styles & Scrollbar */
+        body {
+            background-color: #132a23;
+            color: #f9f6f0;
+            overflow-x: hidden;
+        }
+        
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #132a23; }
+        ::-webkit-scrollbar-thumb { background: rgba(249, 246, 240, 0.2); border-radius: 5px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(249, 246, 240, 0.4); }
+
+        /* Background Noise Texture */
+        .noise-bg {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            pointer-events: none; z-index: -1; opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        /* Reveal Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Timeline styling */
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 24px;
+            width: 2px;
+            background: rgba(249, 246, 240, 0.2);
+        }
+        @media (min-width: 768px) {
+            .timeline-container::before { left: 50%; transform: translateX(-50%); }
+        }
+
+        /* Glass Cards */
+        .glass {
+            background: rgba(249, 246, 240, 0.03);
+            border: 1px solid rgba(249, 246, 240, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        /* Red Button Glow */
+        .btn-red-glow {
+            box-shadow: 0 4px 20px rgba(206, 43, 55, 0.4);
+        }
+        .btn-red-glow:hover {
+            box-shadow: 0 6px 30px rgba(206, 43, 55, 0.6);
+        }
+    </style>
+</head>
+<body class="font-montserrat antialiased selection:bg-gold selection:text-forest">
+
+    <div class="noise-bg"></div>
+
+    <!-- 1. Hero Section -->
+    <header class="relative min-h-screen flex flex-col items-center justify-center text-center px-6 pt-12 pb-24">
+        
+        <!-- Subtle Top Flag Line -->
+        <div class="absolute top-0 left-0 w-full h-1 flex opacity-80">
+            <div class="h-full w-1/3 bg-it_green"></div>
+            <div class="h-full w-1/3 bg-white"></div>
+            <div class="h-full w-1/3 bg-it_red"></div>
+        </div>
+
+        <!-- Logo -->
+        <div class="reveal active mb-6 relative">
+            <!-- Glow behind logo -->
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-white/5 rounded-full blur-3xl pointer-events-none"></div>
+            <img src="images/logo.png" alt="Road to Italy Logo" class="logo-img">
+        </div>
+
+        <!-- Handwritten Title -->
+        <h1 class="reveal active font-dancing text-5xl md:text-7xl lg:text-8xl text-cream mb-8 leading-tight drop-shadow-lg" style="transition-delay: 100ms;">
+            Studying in Italy <br> 
+            <span class="text-4xl md:text-5xl text-cream/80">more than just a degree</span>
+        </h1>
+
+        <!-- Elegant Italian Flag Bar -->
+        <div class="reveal active flex items-center justify-center mb-10 w-48 h-1.5 rounded-full overflow-hidden shadow-lg" style="transition-delay: 200ms;">
+            <div class="h-full w-1/3 bg-it_green"></div>
+            <div class="h-full w-1/3 bg-white"></div>
+            <div class="h-full w-1/3 bg-it_red"></div>
+        </div>
+
+        <!-- Mission & Vision -->
+        <div class="reveal active max-w-4xl grid md:grid-cols-2 gap-8 md:gap-16 mb-16" style="transition-delay: 300ms;">
+            <div class="glass p-8 rounded-2xl">
+                <h2 class="font-playfair text-2xl md:text-3xl text-gold mb-3 font-semibold">Our Mission</h2>
+                <p class="font-montserrat text-cream/90 leading-relaxed font-light">Guide students through every step of studying in Italy, transforming complex procedures into a seamless journey.</p>
+            </div>
+            <div class="glass p-8 rounded-2xl">
+                <h2 class="font-playfair text-2xl md:text-3xl text-gold mb-3 font-semibold">Our Vision</h2>
+                <p class="font-montserrat text-cream/90 leading-relaxed font-light">To become the first trusted destination for Arab students who dream of studying in Italy and building a global future.</p>
+            </div>
+        </div>
+
+        <!-- Red Register Button -->
+        <button onclick="openModal('register-modal')" class="reveal active btn-red-glow bg-it_red hover:bg-[#b0222e] text-white font-montserrat font-bold text-lg md:text-xl py-4 px-12 rounded-full transition-all duration-300 transform hover:-translate-y-1 flex items-center gap-3" style="transition-delay: 400ms;">
+            Register Now
+            <i class="fa-solid fa-arrow-right"></i>
+        </button>
+        
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce text-cream/50">
+            <i class="fa-solid fa-chevron-down text-2xl"></i>
+        </div>
+    </header>
+
+    <!-- 2. Stats Section -->
+    <section class="py-16 border-y border-cream/10 bg-forest/50">
+        <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-10 text-center">
+            <div class="reveal flex flex-col items-center">
+                <span class="font-playfair text-5xl md:text-6xl text-gold font-bold mb-2"><span class="counter" data-target="500">0</span>+</span>
+                <span class="font-montserrat text-cream/70 uppercase tracking-widest text-sm">Accepted Students</span>
+            </div>
+            <div class="reveal flex flex-col items-center" style="transition-delay: 150ms;">
+                <span class="font-playfair text-5xl md:text-6xl text-gold font-bold mb-2"><span class="counter" data-target="20">0</span>+</span>
+                <span class="font-montserrat text-cream/70 uppercase tracking-widest text-sm">Partner Universities</span>
+            </div>
+            <div class="reveal flex flex-col items-center" style="transition-delay: 300ms;">
+                <span class="font-playfair text-5xl md:text-6xl text-gold font-bold mb-2"><span class="counter" data-target="98">0</span>%</span>
+                <span class="font-montserrat text-cream/70 uppercase tracking-widest text-sm">Visa Success Rate</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Our Services -->
+    <section class="py-24 px-6 max-w-7xl mx-auto" id="services">
+        <div class="text-center mb-16 reveal">
+            <h2 class="font-playfair text-4xl md:text-5xl font-bold mb-4">Our Services</h2>
+            <p class="font-montserrat text-cream/60 max-w-2xl mx-auto">Comprehensive support tailored for your educational journey to Italy.</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Service 1 -->
+            <div class="reveal glass p-8 rounded-2xl hover:bg-cream/5 transition-colors group">
+                <i class="fa-solid fa-user-tie text-3xl text-gold mb-6 group-hover:scale-110 transition-transform"></i>
+                <h3 class="font-playfair text-xl font-semibold mb-3">Consultation & Major Selection</h3>
+                <p class="text-cream/70 text-sm leading-relaxed">Personalized sessions to discover the perfect university program and major that aligns with your academic background and career goals.</p>
+            </div>
+            <!-- Service 2 -->
+            <div class="reveal glass p-8 rounded-2xl hover:bg-cream/5 transition-colors group" style="transition-delay: 100ms;">
+                <i class="fa-solid fa-file-alt text-3xl text-gold mb-6 group-hover:scale-110 transition-transform"></i>
+                <h3 class="font-playfair text-xl font-semibold mb-3">Application Management</h3>
+                <p class="text-cream/70 text-sm leading-relaxed">We handle document preparation, translation, and uploading on university portals like DreamApply to ensure flawless submissions.</p>
+            </div>
+            <!-- Service 3 -->
+            <div class="reveal glass p-8 rounded-2xl hover:bg-cream/5 transition-colors group" style="transition-delay: 200ms;">
+                <i class="fa-solid fa-university text-3xl text-gold mb-6 group-hover:scale-110 transition-transform"></i>
+                <h3 class="font-playfair text-xl font-semibold mb-3">Pre-enrollment (Universitaly)</h3>
+                <p class="text-cream/70 text-sm leading-relaxed">Navigating the complex Universitaly portal step-by-step to secure your official pre-enrollment summary required by the embassy.</p>
+            </div>
+            <!-- Service 4 -->
+            <div class="reveal glass p-8 rounded-2xl hover:bg-cream/5 transition-colors group">
+                <i class="fa-solid fa-money-bill-wave text-3xl text-gold mb-6 group-hover:scale-110 transition-transform"></i>
+                <h3 class="font-playfair text-xl font-semibold mb-3">Financial Guidance & Scholarships</h3>
+                <p class="text-cream/70 text-sm leading-relaxed">Assistance with PagoPA fee payments and regional scholarship applications (ISEE, DSU) to significantly reduce your tuition and living costs.</p>
+            </div>
+            <!-- Service 5 -->
+            <div class="reveal glass p-8 rounded-2xl hover:bg-cream/5 transition-colors group" style="transition-delay: 100ms;">
+                <i class="fa-solid fa-passport text-3xl text-gold mb-6 group-hover:scale-110 transition-transform"></i>
+                <h3 class="font-playfair text-xl font-semibold mb-3">Visa & Accommodation</h3>
+                <p class="text-cream/70 text-sm leading-relaxed">Expert review of embassy requirements, booking appointments, and securing initial student accommodation before you travel.</p>
+            </div>
+            <!-- CTA Card -->
+            <div class="reveal glass p-8 rounded-2xl flex flex-col justify-center items-center text-center border-it_red/30 bg-it_red/5" style="transition-delay: 200ms;">
+                <h3 class="font-playfair text-2xl font-semibold mb-4 text-it_red">Start Your Journey</h3>
+                <button onclick="openModal('register-modal')" class="px-6 py-3 bg-it_red text-white rounded-full font-bold hover:bg-[#b0222e] transition-colors w-full">Book Free Consultation</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Why Italy? -->
+    <section class="py-24 bg-cream text-forest">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <h2 class="font-playfair text-4xl md:text-5xl font-bold mb-4">Why Italy?</h2>
+                <div class="w-24 h-1 bg-it_green mx-auto mb-4"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+                <div class="reveal">
+                    <div class="w-20 h-20 mx-auto rounded-full bg-forest/10 flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-graduation-cap text-3xl text-forest"></i>
+                    </div>
+                    <h4 class="font-playfair text-xl font-bold mb-2">Quality Education</h4>
+                    <p class="text-forest/70 text-sm">Home to some of the oldest and highest-ranking universities in the world.</p>
+                </div>
+                <div class="reveal" style="transition-delay: 100ms;">
+                    <div class="w-20 h-20 mx-auto rounded-full bg-forest/10 flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-piggy-bank text-3xl text-forest"></i>
+                    </div>
+                    <h4 class="font-playfair text-xl font-bold mb-2">Affordable Costs</h4>
+                    <p class="text-forest/70 text-sm">Significantly lower tuition fees and living costs compared to the rest of Europe.</p>
+                </div>
+                <div class="reveal" style="transition-delay: 200ms;">
+                    <div class="w-20 h-20 mx-auto rounded-full bg-forest/10 flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-landmark text-3xl text-forest"></i>
+                    </div>
+                    <h4 class="font-playfair text-xl font-bold mb-2">Cultural Heritage</h4>
+                    <p class="text-forest/70 text-sm">Immerse yourself in unparalleled history, art, architecture, and gastronomy.</p>
+                </div>
+                <div class="reveal" style="transition-delay: 300ms;">
+                    <div class="w-20 h-20 mx-auto rounded-full bg-forest/10 flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-language text-3xl text-forest"></i>
+                    </div>
+                    <h4 class="font-playfair text-xl font-bold mb-2">English Programs</h4>
+                    <p class="text-forest/70 text-sm">Hundreds of bachelor's and master's degrees taught entirely in English.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. The Journey -->
+    <section class="py-24 px-6 max-w-4xl mx-auto relative">
+        <div class="text-center mb-16 reveal">
+            <h2 class="font-playfair text-4xl md:text-5xl font-bold mb-4">How It Works</h2>
+            <p class="font-montserrat text-cream/60">Your clear path to studying in Italy.</p>
+        </div>
+
+        <div class="timeline-container relative">
+            <!-- Step 1 -->
+            <div class="reveal flex flex-col md:flex-row items-center mb-12 relative z-10 w-full group">
+                <div class="md:w-1/2 md:pr-12 md:text-right flex flex-col md:items-end w-full pl-12 md:pl-0 mb-4 md:mb-0">
+                    <h3 class="font-playfair text-2xl font-bold text-gold">1. Free Assessment</h3>
+                    <p class="text-cream/70 text-sm mt-2">We review your academic background and suggest the best suited programs and universities.</p>
+                </div>
+                <div class="absolute left-6 md:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-it_red border-4 border-forest group-hover:scale-150 transition-transform"></div>
+                <div class="md:w-1/2 md:pl-12 w-full hidden md:block"></div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="reveal flex flex-col md:flex-row items-center mb-12 relative z-10 w-full group">
+                <div class="md:w-1/2 md:pr-12 w-full hidden md:block"></div>
+                <div class="absolute left-6 md:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-cream border-4 border-forest group-hover:scale-150 transition-transform"></div>
+                <div class="md:w-1/2 md:pl-12 w-full pl-12 md:pl-0">
+                    <h3 class="font-playfair text-2xl font-bold text-gold">2. Document Prep</h3>
+                    <p class="text-cream/70 text-sm mt-2">Translating, legalizing, and formatting your CV, motivation letter, and transcripts.</p>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="reveal flex flex-col md:flex-row items-center mb-12 relative z-10 w-full group">
+                <div class="md:w-1/2 md:pr-12 md:text-right flex flex-col md:items-end w-full pl-12 md:pl-0 mb-4 md:mb-0">
+                    <h3 class="font-playfair text-2xl font-bold text-gold">3. University Application</h3>
+                    <p class="text-cream/70 text-sm mt-2">Submitting applications across multiple universities to maximize your acceptance chances.</p>
+                </div>
+                <div class="absolute left-6 md:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-cream border-4 border-forest group-hover:scale-150 transition-transform"></div>
+                <div class="md:w-1/2 md:pl-12 w-full hidden md:block"></div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="reveal flex flex-col md:flex-row items-center mb-12 relative z-10 w-full group">
+                <div class="md:w-1/2 md:pr-12 w-full hidden md:block"></div>
+                <div class="absolute left-6 md:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-cream border-4 border-forest group-hover:scale-150 transition-transform"></div>
+                <div class="md:w-1/2 md:pl-12 w-full pl-12 md:pl-0">
+                    <h3 class="font-playfair text-2xl font-bold text-gold">4. Universitaly & Acceptance</h3>
+                    <p class="text-cream/70 text-sm mt-2">Receiving your admission letter and finalizing the mandatory Pre-enrollment on Universitaly.</p>
+                </div>
+            </div>
+
+            <!-- Step 5 -->
+            <div class="reveal flex flex-col md:flex-row items-center relative z-10 w-full group">
+                <div class="md:w-1/2 md:pr-12 md:text-right flex flex-col md:items-end w-full pl-12 md:pl-0 mb-4 md:mb-0">
+                    <h3 class="font-playfair text-2xl font-bold text-it_green">5. Visa & Travel</h3>
+                    <p class="text-cream/70 text-sm mt-2">Preparing embassy documents, financial proofs, housing, and getting ready to fly to Italy!</p>
+                </div>
+                <div class="absolute left-6 md:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-it_green border-4 border-forest group-hover:scale-150 transition-transform shadow-[0_0_15px_#009246]"></div>
+                <div class="md:w-1/2 md:pl-12 w-full hidden md:block"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Top Destinations -->
+    <section class="py-16 border-y border-cream/10 bg-forest/50 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 text-center reveal">
+            <h3 class="font-montserrat text-cream/50 uppercase tracking-widest text-sm mb-10">Top Destinations for our students</h3>
+            
+            <div class="flex flex-wrap justify-center items-center gap-x-12 gap-y-8 opacity-80">
+                <div class="font-playfair text-2xl md:text-3xl font-bold text-cream">University of Padua</div>
+                <div class="hidden md:block w-2 h-2 rounded-full bg-it_red"></div>
+                <div class="font-playfair text-2xl md:text-3xl font-bold text-cream">Politecnico di Milano</div>
+                <div class="hidden md:block w-2 h-2 rounded-full bg-it_green"></div>
+                <div class="font-playfair text-2xl md:text-3xl font-bold text-cream">Sapienza University</div>
+                <div class="hidden md:block w-2 h-2 rounded-full bg-it_red"></div>
+                <div class="font-playfair text-2xl md:text-3xl font-bold text-cream">University of Bologna</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Testimonials & 8. FAQ combined layout -->
+    <section class="py-24 px-6 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16">
+        
+        <!-- Testimonials -->
+        <div class="reveal">
+            <h2 class="font-playfair text-3xl md:text-4xl font-bold mb-10">Student Success Stories</h2>
+            <div class="space-y-6">
+                <div class="glass p-6 rounded-2xl relative">
+                    <i class="fa-solid fa-quote-left absolute top-6 right-6 text-4xl text-white/5"></i>
+                    <p class="font-montserrat text-cream/80 text-sm leading-relaxed mb-4 italic">"Road to Italy made the impossible seem easy. Their handling of the Universitaly portal and my visa documents saved me months of stress. I'm now studying Engineering in Milan!"</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-it_red/20 flex items-center justify-center text-it_red font-bold">A</div>
+                        <div>
+                            <h4 class="font-bold text-sm">Ahmed K.</h4>
+                            <p class="text-xs text-cream/50">Politecnico di Milano</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass p-6 rounded-2xl relative">
+                    <i class="fa-solid fa-quote-left absolute top-6 right-6 text-4xl text-white/5"></i>
+                    <p class="font-montserrat text-cream/80 text-sm leading-relaxed mb-4 italic">"I didn't even know about regional scholarships until I talked to them. They guided me through the ISEE process, and now my tuition is almost zero. Highly recommended."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-it_green/20 flex items-center justify-center text-it_green font-bold">S</div>
+                        <div>
+                            <h4 class="font-bold text-sm">Sara M.</h4>
+                            <p class="text-xs text-cream/50">University of Padua</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ -->
+        <div class="reveal" style="transition-delay: 200ms;">
+            <h2 class="font-playfair text-3xl md:text-4xl font-bold mb-10">Frequently Asked Questions</h2>
+            <div class="space-y-4">
+                <!-- FAQ 1 -->
+                <div class="glass rounded-xl overflow-hidden">
+                    <button class="faq-btn w-full px-6 py-4 text-left flex justify-between items-center font-bold focus:outline-none">
+                        <span>What are the language requirements?</span>
+                        <i class="fa-solid fa-plus text-it_red transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 px-6">
+                        <p class="pb-4 text-sm text-cream/70">For English-taught programs, a B2 level is generally required (IELTS 5.5-6.0, TOEFL, or Duolingo in some cases). For Italian-taught, a B2 Italian certificate (CILS, CELI) is needed.</p>
+                    </div>
+                </div>
+                <!-- FAQ 2 -->
+                <div class="glass rounded-xl overflow-hidden">
+                    <button class="faq-btn w-full px-6 py-4 text-left flex justify-between items-center font-bold focus:outline-none">
+                        <span>Is there a specific GPA required?</span>
+                        <i class="fa-solid fa-plus text-it_red transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 px-6">
+                        <p class="pb-4 text-sm text-cream/70">While higher GPAs offer more options, many universities look at the overall profile. We evaluate your transcripts and match you with universities where you have the highest chance of acceptance.</p>
+                    </div>
+                </div>
+                <!-- FAQ 3 -->
+                <div class="glass rounded-xl overflow-hidden">
+                    <button class="faq-btn w-full px-6 py-4 text-left flex justify-between items-center font-bold focus:outline-none">
+                        <span>What are the living costs in Italy?</span>
+                        <i class="fa-solid fa-plus text-it_red transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 px-6">
+                        <p class="pb-4 text-sm text-cream/70">Living costs vary by city. Northern cities like Milan are more expensive (€800-€1200/month), while southern or smaller cities can be around €600-€800/month including accommodation.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. Eligibility Checker -->
+    <section class="py-24 px-6 relative">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-it_red/10 pointer-events-none"></div>
+        <div class="max-w-3xl mx-auto glass p-8 md:p-12 rounded-3xl relative z-10 border-t border-it_red/30 shadow-2xl reveal">
+            <div class="text-center mb-8">
+                <h2 class="font-playfair text-3xl font-bold mb-2">Check Your Eligibility</h2>
+                <p class="text-cream/70 text-sm">Fill out this quick form and our experts will assess your chances for free.</p>
+            </div>
+            
+            <form onsubmit="handleEligibility(event)" class="space-y-5">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <div>
+                        <label class="block text-xs uppercase tracking-wider text-cream/60 mb-2">Full Name</label>
+                        <input type="text" required class="w-full bg-forest border border-cream/20 rounded-lg px-4 py-3 text-cream focus:border-it_red focus:ring-1 focus:ring-it_red outline-none transition-colors">
+                    </div>
+                    <div>
+                        <label class="block text-xs uppercase tracking-wider text-cream/60 mb-2">Phone Number / WhatsApp</label>
+                        <input type="tel" required class="w-full bg-forest border border-cream/20 rounded-lg px-4 py-3 text-cream focus:border-it_red focus:ring-1 focus:ring-it_red outline-none transition-colors">
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <div>
+                        <label class="block text-xs uppercase tracking-wider text-cream/60 mb-2">Current GPA / Grade</label>
+                        <input type="text" placeholder="e.g., 85% or 3.2" required class="w-full bg-forest border border-cream/20 rounded-lg px-4 py-3 text-cream focus:border-it_red focus:ring-1 focus:ring-it_red outline-none transition-colors">
+                    </div>
+                    <div>
+                        <label class="block text-xs uppercase tracking-wider text-cream/60 mb-2">Desired Major</label>
+                        <select required class="w-full bg-forest border border-cream/20 rounded-lg px-4 py-3 text-cream focus:border-it_red focus:ring-1 focus:ring-it_red outline-none transition-colors appearance-none">
+                            <option value="">Select a field...</option>
+                            <option value="engineering">Engineering & Architecture</option>
+                            <option value="medicine">Medicine & Health</option>
+                            <option value="business">Business & Economics</option>
+                            <option value="arts">Arts & Humanities</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="w-full py-4 mt-4 bg-cream text-forest font-bold rounded-lg hover:bg-gold transition-colors flex justify-center items-center gap-2">
+                    Check My Chances <i class="fa-solid fa-paper-plane"></i>
+                </button>
+            </form>
+
+            <div id="eligibility-success" class="hidden absolute inset-0 bg-forest/95 rounded-3xl flex-col items-center justify-center text-center p-8 backdrop-blur-sm z-20">
+                <i class="fa-solid fa-circle-check text-5xl text-it_green mb-4"></i>
+                <h3 class="font-playfair text-2xl font-bold mb-2">Request Received!</h3>
+                <p class="text-cream/70 text-sm">Your profile looks promising. An advisor will contact you on WhatsApp shortly to discuss your options.</p>
+                <button onclick="document.getElementById('eligibility-success').classList.add('hidden')" class="mt-6 text-sm underline text-cream/50 hover:text-cream">Close</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 11. Professional Footer -->
+    <footer class="border-t border-cream/10 pt-16 pb-8 bg-[#0d1f19]">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+            
+            <!-- Brand -->
+            <div>
+                <h2 class="font-playfair text-2xl font-bold text-cream mb-4">Road to Italy</h2>
+                <p class="text-sm text-cream/60 leading-relaxed mb-6">Your trusted partner for educational consultancy, university admissions, and visa guidance for Italy.</p>
+                <div class="flex gap-4">
+                    <a href="#" class="w-10 h-10 rounded-full bg-cream/5 flex items-center justify-center hover:bg-it_red hover:text-white transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-cream/5 flex items-center justify-center hover:bg-it_red hover:text-white transition-colors"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-cream/5 flex items-center justify-center hover:bg-it_red hover:text-white transition-colors"><i class="fa-brands fa-facebook-f"></i></a>
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div>
+                <h3 class="font-bold text-lg mb-4 text-gold">Quick Links</h3>
+                <ul class="space-y-3 text-sm text-cream/70">
+                    <li><a href="#services" class="hover:text-cream transition-colors">Our Services</a></li>
+                    <li><a href="#" class="hover:text-cream transition-colors">Universities</a></li>
+                    <li><a href="#" class="hover:text-cream transition-colors">Student Dashboard (Coming Soon)</a></li>
+                    <li><a href="#" class="hover:text-cream transition-colors">Privacy Policy</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact Info -->
+            <div>
+                <h3 class="font-bold text-lg mb-4 text-gold">Contact Us</h3>
+                <ul class="space-y-4 text-sm text-cream/70">
+                    <li class="flex items-start gap-3">
+                        <i class="fa-solid fa-location-dot mt-1 text-it_red"></i>
+                        <span>Assiut, Egypt</span>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <i class="fa-solid fa-envelope text-it_red"></i>
+                        <a href="mailto:yossefabdelkarem9@gmail.com" class="hover:text-cream transition-colors">yossefabdelkarem9@gmail.com</a>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <i class="fa-solid fa-phone text-it_red"></i>
+                        <a href="tel:+201006102986" dir="ltr" class="hover:text-cream transition-colors">+20 100 610 2986</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="text-center pt-8 border-t border-cream/10 text-xs text-cream/40">
+            &copy; 2026 Road to Italy. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- 10. Floating WhatsApp Button -->
+    <a href="https://wa.me/201006102986" target="_blank" class="fixed bottom-6 right-6 w-14 h-14 bg-[#25D366] text-white rounded-full flex items-center justify-center text-3xl shadow-lg hover:scale-110 transition-transform z-40 hover:shadow-[0_0_20px_#25D366]">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- Register Modal -->
+    <div id="register-modal" class="fixed inset-0 z-50 flex items-center justify-center px-4 bg-forest/90 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="bg-cream text-forest w-full max-w-md rounded-2xl overflow-hidden shadow-2xl transform scale-95 transition-transform duration-300" id="modal-content">
+            
+            <div class="relative bg-it_red text-white p-6 text-center">
+                <button onclick="closeModal('register-modal')" class="absolute top-4 right-4 text-white/70 hover:text-white">
+                    <i class="fa-solid fa-xmark text-xl"></i>
+                </button>
+                <h3 class="font-playfair text-2xl font-bold">Start Your Registration</h3>
+                <p class="text-sm mt-1 text-white/80">Step 1 towards your Italian degree</p>
+            </div>
+
+            <div class="p-8">
+                <form onsubmit="handleRegistration(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-bold text-forest/70 uppercase mb-1">Full Name</label>
+                        <input type="text" required class="w-full border-b-2 border-forest/20 py-2 focus:border-it_red outline-none bg-transparent transition-colors font-semibold">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-forest/70 uppercase mb-1">Email</label>
+                        <input type="email" required class="w-full border-b-2 border-forest/20 py-2 focus:border-it_red outline-none bg-transparent transition-colors font-semibold">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-forest/70 uppercase mb-1">WhatsApp Number</label>
+                        <input type="tel" required class="w-full border-b-2 border-forest/20 py-2 focus:border-it_red outline-none bg-transparent transition-colors font-semibold">
+                    </div>
+                    <button type="submit" class="w-full py-4 mt-6 bg-forest text-cream rounded-xl font-bold hover:bg-it_red hover:text-white transition-colors shadow-lg">
+                        Submit Application
+                    </button>
+                </form>
+
+                <div id="register-success" class="hidden absolute inset-0 bg-cream flex-col items-center justify-center text-center p-8 z-10">
+                    <div class="w-16 h-16 rounded-full bg-it_green/20 text-it_green flex items-center justify-center text-3xl mb-4">
+                        <i class="fa-solid fa-check"></i>
+                    </div>
+                    <h3 class="font-playfair text-2xl font-bold mb-2">Welcome Aboard!</h3>
+                    <p class="text-forest/70 text-sm">We have received your details. Check your WhatsApp shortly for the next steps.</p>
+                    <button onclick="closeModal('register-modal')" class="mt-8 px-6 py-2 border border-forest text-forest rounded-lg hover:bg-forest hover:text-cream transition-colors">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interactivity Scripts -->
+    <script>
+        // 1. Scroll Reveal Animation
+        const revealElements = document.querySelectorAll('.reveal');
+        
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // 2. Numbers Counter Animation
+        const counters = document.querySelectorAll('.counter');
+        let hasCounted = false;
+
+        const counterObserver = new IntersectionObserver((entries) => {
+            if(entries[0].isIntersecting && !hasCounted) {
+                hasCounted = true;
+                counters.forEach(counter => {
+                    const target = +counter.getAttribute('data-target');
+                    const duration = 2000; // 2 seconds
+                    const increment = target / (duration / 16); // 60fps
+                    let current = 0;
+
+                    const updateCounter = () => {
+                        current += increment;
+                        if(current < target) {
+                            counter.innerText = Math.ceil(current);
+                            requestAnimationFrame(updateCounter);
+                        } else {
+                            counter.innerText = target;
+                        }
+                    };
+                    updateCounter();
+                });
+            }
+        }, { threshold: 0.5 });
+        
+        if(counters.length > 0) counterObserver.observe(counters[0]);
+
+        // 3. FAQ Accordion Logic
+        const faqBtns = document.querySelectorAll('.faq-btn');
+        faqBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const content = btn.nextElementSibling;
+                const icon = btn.querySelector('i');
+                
+                // Toggle current
+                if (content.style.maxHeight) {
+                    content.style.maxHeight = null;
+                    icon.classList.remove('rotate-45');
+                } else {
+                    // Close others (optional, remove if you want multiple open at once)
+                    document.querySelectorAll('.faq-content').forEach(el => el.style.maxHeight = null);
+                    document.querySelectorAll('.faq-btn i').forEach(el => el.classList.remove('rotate-45'));
+                    
+                    content.style.maxHeight = content.scrollHeight + "px";
+                    icon.classList.add('rotate-45');
+                }
+            });
+        });
+
+        // 4. Modal Logic
+        const modal = document.getElementById('register-modal');
+        const modalContent = document.getElementById('modal-content');
+        const regSuccess = document.getElementById('register-success');
+        const regForm = modal.querySelector('form');
+
+        function openModal(id) {
+            const m = document.getElementById(id);
+            m.classList.remove('opacity-0', 'pointer-events-none');
+            m.querySelector('#modal-content').classList.remove('scale-95');
+            // reset state
+            regSuccess.classList.add('hidden');
+            regSuccess.classList.remove('flex');
+            regForm.reset();
+        }
+
+        function closeModal(id) {
+            const m = document.getElementById(id);
+            m.classList.add('opacity-0', 'pointer-events-none');
+            m.querySelector('#modal-content').classList.add('scale-95');
+        }
+
+        // Close on backdrop click
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal('register-modal');
+        });
+
+        // 5. Form Submissions
+        function handleRegistration(e) {
+            e.preventDefault();
+            regSuccess.classList.remove('hidden');
+            regSuccess.classList.add('flex');
+        }
+
+        function handleEligibility(e) {
+            e.preventDefault();
+            const successMsg = document.getElementById('eligibility-success');
+            successMsg.classList.remove('hidden');
+            successMsg.classList.add('flex');
+            e.target.reset();
+        }
+    </script>
+</body>
+</html>
