@@ -40,7 +40,6 @@
     </script>
 
     <style>
-        /* Custom Styles & Scrollbar */
         body {
             background-color: #132a23;
             color: #f9f6f0;
@@ -52,7 +51,6 @@
         ::-webkit-scrollbar-thumb { background: rgba(249, 246, 240, 0.2); border-radius: 5px; }
         ::-webkit-scrollbar-thumb:hover { background: rgba(249, 246, 240, 0.4); }
 
-        /* Background Noise Texture */
         .noise-bg {
             position: fixed;
             top: 0; left: 0; width: 100vw; height: 100vh;
@@ -60,7 +58,6 @@
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
         }
 
-        /* Reveal Animations */
         .reveal {
             opacity: 0;
             transform: translateY(40px);
@@ -71,7 +68,6 @@
             transform: translateY(0);
         }
         
-        /* Timeline styling */
         .timeline-container::before {
             content: '';
             position: absolute;
@@ -85,19 +81,40 @@
             .timeline-container::before { left: 50%; transform: translateX(-50%); }
         }
 
-        /* Glass Cards */
         .glass {
             background: rgba(249, 246, 240, 0.03);
             border: 1px solid rgba(249, 246, 240, 0.1);
             backdrop-filter: blur(10px);
         }
 
-        /* Red Button Glow */
         .btn-red-glow {
             box-shadow: 0 4px 20px rgba(206, 43, 55, 0.4);
         }
         .btn-red-glow:hover {
             box-shadow: 0 6px 30px rgba(206, 43, 55, 0.6);
+        }
+
+        /* تعديلات احترافية لدمج اللوجو مع الخلفية */
+        .logo-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+        .logo-wrapper::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle, rgba(19,42,35,0) 40%, rgba(19,42,35,0.8) 100%);
+            pointer-events: none;
+        }
+        .logo-img {
+            max-width: 280px;
+            width: 100%;
+            height: auto;
+            filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.4));
+            transition: transform 0.5s ease;
+        }
+        .logo-img:hover {
+            transform: scale(1.03);
         }
     </style>
 </head>
@@ -115,10 +132,9 @@
             <div class="h-full w-1/3 bg-it_red"></div>
         </div>
 
-        <!-- Logo -->
-        <div class="reveal active mb-6 relative">
-            <!-- Glow behind logo -->
-            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-white/5 rounded-full blur-3xl pointer-events-none"></div>
+        <!-- Logo Container with Professional Blend -->
+        <div class="reveal active mb-6 relative logo-wrapper">
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-cream/5 rounded-full blur-2xl pointer-events-none"></div>
             <img src="images/logo.png" alt="Road to Italy Logo" class="logo-img">
         </div>
 
@@ -148,7 +164,7 @@
         </div>
 
         <!-- Red Register Button -->
-        <button onclick="openModal('register-modal')" class="reveal active btn-red-glow bg-it_red hover:bg-[#b0222e] text-white font-montserrat font-bold text-lg md:text-xl py-4 px-12 rounded-full transition-all duration-300 transform hover:-translate-y-1 flex items-center gap-3" style="transition-delay: 400ms;">
+        <button onclick="openModal('register-modal')" class="reveal active btn-red-glow bg-it_red hover:bg-[#b0222e] font-montserrat font-bold text-lg md:text-xl py-4 px-12 rounded-full transition-all duration-300 transform hover:-translate-y-1 flex items-center gap-3 text-white" style="transition-delay: 400ms;">
             Register Now
             <i class="fa-solid fa-arrow-right"></i>
         </button>
@@ -185,37 +201,31 @@
         </div>
         
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Service 1 -->
             <div class="reveal glass p-8 rounded-2xl hover:bg-cream/5 transition-colors group">
                 <i class="fa-solid fa-user-tie text-3xl text-gold mb-6 group-hover:scale-110 transition-transform"></i>
                 <h3 class="font-playfair text-xl font-semibold mb-3">Consultation & Major Selection</h3>
                 <p class="text-cream/70 text-sm leading-relaxed">Personalized sessions to discover the perfect university program and major that aligns with your academic background and career goals.</p>
             </div>
-            <!-- Service 2 -->
             <div class="reveal glass p-8 rounded-2xl hover:bg-cream/5 transition-colors group" style="transition-delay: 100ms;">
                 <i class="fa-solid fa-file-alt text-3xl text-gold mb-6 group-hover:scale-110 transition-transform"></i>
                 <h3 class="font-playfair text-xl font-semibold mb-3">Application Management</h3>
                 <p class="text-cream/70 text-sm leading-relaxed">We handle document preparation, translation, and uploading on university portals like DreamApply to ensure flawless submissions.</p>
             </div>
-            <!-- Service 3 -->
             <div class="reveal glass p-8 rounded-2xl hover:bg-cream/5 transition-colors group" style="transition-delay: 200ms;">
                 <i class="fa-solid fa-university text-3xl text-gold mb-6 group-hover:scale-110 transition-transform"></i>
                 <h3 class="font-playfair text-xl font-semibold mb-3">Pre-enrollment (Universitaly)</h3>
                 <p class="text-cream/70 text-sm leading-relaxed">Navigating the complex Universitaly portal step-by-step to secure your official pre-enrollment summary required by the embassy.</p>
             </div>
-            <!-- Service 4 -->
             <div class="reveal glass p-8 rounded-2xl hover:bg-cream/5 transition-colors group">
                 <i class="fa-solid fa-money-bill-wave text-3xl text-gold mb-6 group-hover:scale-110 transition-transform"></i>
                 <h3 class="font-playfair text-xl font-semibold mb-3">Financial Guidance & Scholarships</h3>
                 <p class="text-cream/70 text-sm leading-relaxed">Assistance with PagoPA fee payments and regional scholarship applications (ISEE, DSU) to significantly reduce your tuition and living costs.</p>
             </div>
-            <!-- Service 5 -->
             <div class="reveal glass p-8 rounded-2xl hover:bg-cream/5 transition-colors group" style="transition-delay: 100ms;">
                 <i class="fa-solid fa-passport text-3xl text-gold mb-6 group-hover:scale-110 transition-transform"></i>
                 <h3 class="font-playfair text-xl font-semibold mb-3">Visa & Accommodation</h3>
                 <p class="text-cream/70 text-sm leading-relaxed">Expert review of embassy requirements, booking appointments, and securing initial student accommodation before you travel.</p>
             </div>
-            <!-- CTA Card -->
             <div class="reveal glass p-8 rounded-2xl flex flex-col justify-center items-center text-center border-it_red/30 bg-it_red/5" style="transition-delay: 200ms;">
                 <h3 class="font-playfair text-2xl font-semibold mb-4 text-it_red">Start Your Journey</h3>
                 <button onclick="openModal('register-modal')" class="px-6 py-3 bg-it_red text-white rounded-full font-bold hover:bg-[#b0222e] transition-colors w-full">Book Free Consultation</button>
@@ -272,7 +282,6 @@
         </div>
 
         <div class="timeline-container relative">
-            <!-- Step 1 -->
             <div class="reveal flex flex-col md:flex-row items-center mb-12 relative z-10 w-full group">
                 <div class="md:w-1/2 md:pr-12 md:text-right flex flex-col md:items-end w-full pl-12 md:pl-0 mb-4 md:mb-0">
                     <h3 class="font-playfair text-2xl font-bold text-gold">1. Free Assessment</h3>
@@ -282,7 +291,6 @@
                 <div class="md:w-1/2 md:pl-12 w-full hidden md:block"></div>
             </div>
 
-            <!-- Step 2 -->
             <div class="reveal flex flex-col md:flex-row items-center mb-12 relative z-10 w-full group">
                 <div class="md:w-1/2 md:pr-12 w-full hidden md:block"></div>
                 <div class="absolute left-6 md:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-cream border-4 border-forest group-hover:scale-150 transition-transform"></div>
@@ -292,7 +300,6 @@
                 </div>
             </div>
 
-            <!-- Step 3 -->
             <div class="reveal flex flex-col md:flex-row items-center mb-12 relative z-10 w-full group">
                 <div class="md:w-1/2 md:pr-12 md:text-right flex flex-col md:items-end w-full pl-12 md:pl-0 mb-4 md:mb-0">
                     <h3 class="font-playfair text-2xl font-bold text-gold">3. University Application</h3>
@@ -302,7 +309,6 @@
                 <div class="md:w-1/2 md:pl-12 w-full hidden md:block"></div>
             </div>
 
-            <!-- Step 4 -->
             <div class="reveal flex flex-col md:flex-row items-center mb-12 relative z-10 w-full group">
                 <div class="md:w-1/2 md:pr-12 w-full hidden md:block"></div>
                 <div class="absolute left-6 md:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-cream border-4 border-forest group-hover:scale-150 transition-transform"></div>
@@ -312,7 +318,6 @@
                 </div>
             </div>
 
-            <!-- Step 5 -->
             <div class="reveal flex flex-col md:flex-row items-center relative z-10 w-full group">
                 <div class="md:w-1/2 md:pr-12 md:text-right flex flex-col md:items-end w-full pl-12 md:pl-0 mb-4 md:mb-0">
                     <h3 class="font-playfair text-2xl font-bold text-it_green">5. Visa & Travel</h3>
@@ -341,10 +346,8 @@
         </div>
     </section>
 
-    <!-- 7. Testimonials & 8. FAQ combined layout -->
+    <!-- 7. Testimonials & FAQ -->
     <section class="py-24 px-6 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16">
-        
-        <!-- Testimonials -->
         <div class="reveal">
             <h2 class="font-playfair text-3xl md:text-4xl font-bold mb-10">Student Success Stories</h2>
             <div class="space-y-6">
@@ -374,11 +377,9 @@
             </div>
         </div>
 
-        <!-- FAQ -->
         <div class="reveal" style="transition-delay: 200ms;">
             <h2 class="font-playfair text-3xl md:text-4xl font-bold mb-10">Frequently Asked Questions</h2>
             <div class="space-y-4">
-                <!-- FAQ 1 -->
                 <div class="glass rounded-xl overflow-hidden">
                     <button class="faq-btn w-full px-6 py-4 text-left flex justify-between items-center font-bold focus:outline-none">
                         <span>What are the language requirements?</span>
@@ -388,7 +389,6 @@
                         <p class="pb-4 text-sm text-cream/70">For English-taught programs, a B2 level is generally required (IELTS 5.5-6.0, TOEFL, or Duolingo in some cases). For Italian-taught, a B2 Italian certificate (CILS, CELI) is needed.</p>
                     </div>
                 </div>
-                <!-- FAQ 2 -->
                 <div class="glass rounded-xl overflow-hidden">
                     <button class="faq-btn w-full px-6 py-4 text-left flex justify-between items-center font-bold focus:outline-none">
                         <span>Is there a specific GPA required?</span>
@@ -398,7 +398,6 @@
                         <p class="pb-4 text-sm text-cream/70">While higher GPAs offer more options, many universities look at the overall profile. We evaluate your transcripts and match you with universities where you have the highest chance of acceptance.</p>
                     </div>
                 </div>
-                <!-- FAQ 3 -->
                 <div class="glass rounded-xl overflow-hidden">
                     <button class="faq-btn w-full px-6 py-4 text-left flex justify-between items-center font-bold focus:outline-none">
                         <span>What are the living costs in Italy?</span>
@@ -466,8 +465,6 @@
     <!-- 11. Professional Footer -->
     <footer class="border-t border-cream/10 pt-16 pb-8 bg-[#0d1f19]">
         <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
-            
-            <!-- Brand -->
             <div>
                 <h2 class="font-playfair text-2xl font-bold text-cream mb-4">Road to Italy</h2>
                 <p class="text-sm text-cream/60 leading-relaxed mb-6">Your trusted partner for educational consultancy, university admissions, and visa guidance for Italy.</p>
@@ -478,7 +475,6 @@
                 </div>
             </div>
 
-            <!-- Quick Links -->
             <div>
                 <h3 class="font-bold text-lg mb-4 text-gold">Quick Links</h3>
                 <ul class="space-y-3 text-sm text-cream/70">
@@ -489,7 +485,6 @@
                 </ul>
             </div>
 
-            <!-- Contact Info -->
             <div>
                 <h3 class="font-bold text-lg mb-4 text-gold">Contact Us</h3>
                 <ul class="space-y-4 text-sm text-cream/70">
@@ -564,9 +559,7 @@
 
     <!-- Interactivity Scripts -->
     <script>
-        // 1. Scroll Reveal Animation
         const revealElements = document.querySelectorAll('.reveal');
-        
         const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -577,7 +570,6 @@
 
         revealElements.forEach(el => revealObserver.observe(el));
 
-        // 2. Numbers Counter Animation
         const counters = document.querySelectorAll('.counter');
         let hasCounted = false;
 
@@ -586,8 +578,8 @@
                 hasCounted = true;
                 counters.forEach(counter => {
                     const target = +counter.getAttribute('data-target');
-                    const duration = 2000; // 2 seconds
-                    const increment = target / (duration / 16); // 60fps
+                    const duration = 2000;
+                    const increment = target / (duration / 16);
                     let current = 0;
 
                     const updateCounter = () => {
@@ -606,19 +598,16 @@
         
         if(counters.length > 0) counterObserver.observe(counters[0]);
 
-        // 3. FAQ Accordion Logic
         const faqBtns = document.querySelectorAll('.faq-btn');
         faqBtns.forEach(btn => {
             btn.addEventListener('click', () => {
                 const content = btn.nextElementSibling;
                 const icon = btn.querySelector('i');
                 
-                // Toggle current
                 if (content.style.maxHeight) {
                     content.style.maxHeight = null;
                     icon.classList.remove('rotate-45');
                 } else {
-                    // Close others (optional, remove if you want multiple open at once)
                     document.querySelectorAll('.faq-content').forEach(el => el.style.maxHeight = null);
                     document.querySelectorAll('.faq-btn i').forEach(el => el.classList.remove('rotate-45'));
                     
@@ -628,7 +617,6 @@
             });
         });
 
-        // 4. Modal Logic
         const modal = document.getElementById('register-modal');
         const modalContent = document.getElementById('modal-content');
         const regSuccess = document.getElementById('register-success');
@@ -638,7 +626,6 @@
             const m = document.getElementById(id);
             m.classList.remove('opacity-0', 'pointer-events-none');
             m.querySelector('#modal-content').classList.remove('scale-95');
-            // reset state
             regSuccess.classList.add('hidden');
             regSuccess.classList.remove('flex');
             regForm.reset();
@@ -650,12 +637,10 @@
             m.querySelector('#modal-content').classList.add('scale-95');
         }
 
-        // Close on backdrop click
         modal.addEventListener('click', (e) => {
             if (e.target === modal) closeModal('register-modal');
         });
 
-        // 5. Form Submissions
         function handleRegistration(e) {
             e.preventDefault();
             regSuccess.classList.remove('hidden');
